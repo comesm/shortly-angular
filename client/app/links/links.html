@@ -1,12 +1,23 @@
 <div id='container'>
   <!-- Your html here -->
+
+  <div class='navigation'>
+  <ul>
+    <li><a href='#/links' class='index'>All Links</a></li>
+    <li><a href='#/shorten' class='create'>Shorten</a></li>
+  </ul>
+    <a href='#/'  ng-click='signout()' class='logout'>Logout</a>
+  </div>
+  <div id='container'></div>
+
   <img src='/assets/redirect_icon.png'/>
-  <div class='info' ng-repeat="link in data.links">
+  <div class='info' ng-repeat="link in data.links | orderBy:'visits':'true'">
     <div class='visits'><span class='count'>{{link.visits}}</span>Visits</div>
     <div class='title'>{{link.title}}</div>
     <div class='original'>{{link.url}}</div>
-    <a href='{{baseUrl}}/{{code}}'>{{link.baseUrl}}/{{link.code}}</a>
+    <a href='{{link.baseUrl}}/{{link.code}}'>{{link.baseUrl}}/{{link.code}}</a>
   </div>
+
   <pre>
   {{data}}
   </pre>
