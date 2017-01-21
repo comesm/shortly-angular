@@ -20,7 +20,10 @@ module.exports = {
   },
 
   newLink: function (req, res, next) {
+
     var url = req.body.url;
+    console.log('req ', req);
+    console.log('url ', url);
     if (!util.isValidUrl(url)) {
       return next(new Error('Not a valid url'));
     }
@@ -58,7 +61,7 @@ module.exports = {
     findLink({code: req.params.code})
       .then(function (link) {
         if (!link) {
-          return next(new Error('Link not added yet'));
+          return next();//new Error('Link not added yet'));
         }
 
         link.visits++;

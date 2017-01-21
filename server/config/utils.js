@@ -5,6 +5,7 @@ var rValidUrl = /^(?!mailto:)(?:(?:https?|ftp):\/\/)?(?:\S+(?::\S*)?@)?(?:(?:(?:
 
 module.exports = {
   getUrlTitle: function (url) {
+    console.log('url', url);
     return Q.Promise(function (resolve, reject) {
       request(url, function (err, res, html) {
         if (err) {
